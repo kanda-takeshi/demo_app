@@ -6,7 +6,7 @@ DemoApp::Application.routes.draw do
   
   root "static_pages#home"
   #devise_for :users
-  resources :users, only: [:show]
+  resources :users, only: [:show, :index] #[ ]内に書かれたアクションが許可される
   
   
   match "/help" , to: "static_pages#help" , via: "get"
