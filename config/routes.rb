@@ -7,6 +7,7 @@ DemoApp::Application.routes.draw do
   root "static_pages#home"
   #devise_for :users
   resources :users, only: [:show, :index, :destroy] #[ ]内に書かれたアクションが許可される
+  resources :microposts, only: [:create, :destroy]
   
   
   match "/help" , to: "static_pages#help" , via: "get"
