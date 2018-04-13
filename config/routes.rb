@@ -4,10 +4,19 @@ DemoApp::Application.routes.draw do
     :registrations => "registrations"
   }
   
+  resources :users, only: [:show, :index, :destroy] do
+    member do
+      get :following, :followers
+    end
+  end
+  
+  
+  
   root "static_pages#home"
   #devise_for :users
   resources :users, only: [:show, :index, :destroy] #[ ]内に書かれたアクションが許可される
   resources :microposts, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
   
   
   match "/help" , to: "static_pages#help" , via: "get"
